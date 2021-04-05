@@ -1,5 +1,7 @@
 # -*- utf-8 -*-
 
+import os
+
 
 class DataLoader:
     """
@@ -15,3 +17,16 @@ class DataLoader:
     def __init__(self, data_dir):
         self.data_dir = data_dir
         self.data = list()
+
+    def normalize_path(self, parts: list):
+        """
+        Method used to join and normalize a list of paths parts to a single one
+
+        :param parts:
+        :type parts: list
+
+        :return: str -- Nomalized Path
+
+        .. obs: It does not order the given list.
+        """
+        return os.path.normpath(os.path.join(*parts))

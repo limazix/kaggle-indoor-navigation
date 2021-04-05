@@ -28,7 +28,7 @@ test:
 	@$(PYTHON_RUNNER) pytest
 
 test-watch:
-	@$(PYTHON_RUNNER) pytest -f
+	@$(PYTHON_RUNNER) pytest -f --cov=$(PYTHON_TOOLS)
 
 coverage:
 	@$(PYTHON_RUNNER) pytest --cov=$(PYTHON_TOOLS)
