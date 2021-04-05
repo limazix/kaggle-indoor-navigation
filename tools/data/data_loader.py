@@ -32,3 +32,11 @@ class DataLoader:
         if len(parts) == 0:
             parts.append(".")
         return os.path.normpath(os.path.join(*parts))
+
+    def load_data(self):
+        """
+        Method used to load the data based on the given path
+
+        """
+        for building_id in os.listdir(self.data_dir):
+            print(self.normalize_path([self.data_dir, building_id]))

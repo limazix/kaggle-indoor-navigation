@@ -3,6 +3,7 @@
 import os
 
 from unittest import TestCase
+from unittest.mock import patch
 
 from tools.data import DataLoader
 
@@ -45,3 +46,11 @@ class TestDataLoader(TestCase):
 
         result = self.tool.normalize_path(parts)
         self.assertEqual(result, expected)
+
+    @patch.object(DataLoader, "normalize_path")
+    def test_load_data(self, mock_normalize_path):
+        """
+        it should run over the given path folder and print each subdir name
+        """
+        self.tool.load_data()
+        mock_normalize_path.assert_called()
