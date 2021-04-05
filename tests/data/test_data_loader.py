@@ -35,3 +35,13 @@ class TestDataLoader(TestCase):
 
         result = self.tool.normalize_path(parts)
         self.assertEqual(result, expected)
+
+    def test_normalize_path_empty(self):
+        """
+        it should return the project root folder if no path part is provided
+        """
+        parts = []
+        expected = os.path.normpath(".")
+
+        result = self.tool.normalize_path(parts)
+        self.assertEqual(result, expected)

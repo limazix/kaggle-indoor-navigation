@@ -25,8 +25,10 @@ class DataLoader:
         :param parts:
         :type parts: list
 
-        :return: str -- Nomalized Path
+        :return: str -- Normalized Path
 
         .. obs: It does not order the given list.
         """
+        if len(parts) == 0:
+            parts.append(".")
         return os.path.normpath(os.path.join(*parts))
