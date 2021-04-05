@@ -54,3 +54,12 @@ class TestDataLoader(TestCase):
         """
         self.tool.load_data()
         mock_normalize_path.assert_called()
+
+    @patch.object(os, "listdir")
+    def test_load_data_base_dir(self, mock_listdir):
+        """
+        it should run over the given base dir instead of the class data dir
+        """
+        base_dir = "./data/test"
+        self.tool.load_data(base_dir=base_dir)
+        mock_listdir.assert_called_with(base_dir)

@@ -33,10 +33,15 @@ class DataLoader:
             parts.append(".")
         return os.path.normpath(os.path.join(*parts))
 
-    def load_data(self):
+    def load_data(self, base_dir: str = None):
         """
         Method used to load the data based on the given path
 
+        :param base_dir: Directory path to run over
+        :type base_dir: str
+
         """
-        for building_id in os.listdir(self.data_dir):
-            print(self.normalize_path([self.data_dir, building_id]))
+        base_dir = base_dir if base_dir is not None else self.data_dir
+
+        for subdir in os.listdir(base_dir):
+            print(self.normalize_path([base_dir, subdir]))
